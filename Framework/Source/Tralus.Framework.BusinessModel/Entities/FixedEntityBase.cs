@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data.Entity;
@@ -32,6 +34,16 @@ namespace Tralus.Framework.BusinessModel.Entities
 
         public virtual int PredefinedDataApplyingOrder => 1000;
 
+        protected abstract IList GetFixedItems();
+
+        private static readonly ConcurrentDictionary<Type, IList> Cache = new ConcurrentDictionary<Type, IList>();
+
+        public IEnumerable<T> All<T>()
+        {
+            var list = Cache.GetOrAdd(typeof(T), t => GetFixedItems());
+            return list.Cast<T>().ToArray();
+        }
+
         public abstract void PredefineData(DbContext dbContext);
 
         public override bool Equals(object obj)
@@ -51,7 +63,7 @@ namespace Tralus.Framework.BusinessModel.Entities
 
         public static bool operator ==(FixedEntityBase fixedEntity, Enum enumValue)
         {
-            if (fixedEntity == null)
+            if (Object.Equals(fixedEntity ,null))
             {
                 if (enumValue == null)
                     return true;

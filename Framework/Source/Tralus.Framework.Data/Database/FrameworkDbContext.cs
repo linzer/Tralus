@@ -1,9 +1,11 @@
 using System;
 using System.Data.Common;
 using System.Data.Entity;
+using DevExpress.ExpressApp.EF.Updating;
 using DevExpress.ExpressApp.Workflow.EF;
 using DevExpress.ExpressApp.Workflow.Versioning;
 using DevExpress.Persistent.BaseImpl.EF;
+using DevExpress.Persistent.BaseImpl.EF.Kpi;
 using DevExpress.Workflow.EF;
 using Tralus.Framework.BusinessModel.Entities;
 using Role = Tralus.Framework.BusinessModel.Entities.Role;
@@ -62,6 +64,7 @@ namespace  Tralus.Framework.Data {
 	        modelBuilder.Entity<EFUserActivityVersion>().ToTable("EFUserActivityVersion", "Tralus");
 	        modelBuilder.Entity<ModelDifference>().ToTable("ModelDifference", "Tralus");
 	        modelBuilder.Entity<ModelDifferenceAspect>().ToTable("ModelDifferenceAspect", "Tralus");
+	        modelBuilder.Entity<ModuleInfo>().ToTable("ModuleInfo", "Tralus");
 
 	        
 	    }
@@ -79,5 +82,12 @@ namespace  Tralus.Framework.Data {
         public virtual DbSet<ModelDifference> ModelDifference { get; set; }
         public virtual DbSet<ModelDifferenceAspect> ModelDifferenceAspect { get; set; }
         public virtual DbSet<User> User { get; set; }
+        public DbSet<ModuleInfo> ModulesInfo { get; set; }
+        public DbSet<DashboardData> DashboardData { get; set; }
+        public DbSet<KpiDefinition> KpiDefinition { get; set; }
+        public DbSet<KpiInstance> KpiInstance { get; set; }
+        public DbSet<KpiHistoryItem> KpiHistoryItem { get; set; }
+        public DbSet<KpiScorecard> KpiScorecard { get; set; }
+
     }
 }

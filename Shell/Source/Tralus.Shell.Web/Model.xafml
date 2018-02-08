@@ -3,6 +3,7 @@
   <NavigationItems>
     <Items>
       <Item Id="Default" Visible="False" />
+      <Item Id="Workflow" Visible="False" />
     </Items>
   </NavigationItems>
 </Application>

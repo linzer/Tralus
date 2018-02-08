@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DevExpress.ExpressApp;
+using DevExpress.ExpressApp.Dashboards.Win;
 using DevExpress.ExpressApp.DC;
 using DevExpress.ExpressApp.Model;
 using DevExpress.ExpressApp.Model.Core;
@@ -13,8 +14,13 @@ namespace Tralus.Framework.Module.Win
 {
     public class TralusWinModule : TralusModule
     {
-       
+        protected TralusWinModule()
+        {
+            if (!(this is FrameworkWindowsFormsModule))
+            {
+                this.RequiredModuleTypes.Add(typeof(FrameworkWindowsFormsModule));
+                this.RequiredModuleTypes.Add(typeof(DashboardsWindowsFormsModule));
+            }
+        }
     }
-
-    
 }

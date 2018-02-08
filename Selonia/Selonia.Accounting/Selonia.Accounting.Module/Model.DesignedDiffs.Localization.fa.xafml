@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application ProtectedContentText="اطلاعات حفاظت شده">
+  <BOModel>
+    <Class Name="Selonia.Accounting.BusinessModel.AccGeneral" Caption="حساب کل">
+      <OwnMembers>
+        <Member Name="Group" Caption="گروه" />
+        <Member Name="Ledgers" Caption="معین‌ها" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Selonia.Accounting.BusinessModel.AccGroup" Caption="گروه">
+      <OwnMembers>
+        <Member Name="Generals" Caption="دفاتر کل" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Selonia.Accounting.BusinessModel.AccLedger" Caption="معین">
+      <OwnMembers>
+        <Member Name="General" Caption="دفتر کل" />
+        <Member Name="SegmentSettings" Caption="تنظیمات تفصیلی" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Selonia.Accounting.BusinessModel.AccStructure" Caption="ساختار حساب">
+      <OwnMembers>
+        <Member Name="Children" Caption="فرزندان" />
+        <Member Name="Code" Caption="کد" />
+        <Member Name="Description" Caption="شرح" />
+        <Member Name="Name" Caption="نام" />
+        <Member Name="Parent" Caption="پدر" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Selonia.Accounting.BusinessModel.FiscalYear" Caption="سال مالی">
+      <OwnMembers>
+        <Member Name="Description" Caption="شرح" />
+        <Member Name="EndDate" Caption="پایان سال" />
+        <Member Name="IsDefault" Caption="سال پیش‌فرض" />
+        <Member Name="Name" Caption="نام" />
+        <Member Name="StartDate" Caption="شروع سال" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Selonia.Accounting.BusinessModel.LedgerSegmentSetting" Caption="تنظیمات تفصیلی سند">
+      <OwnMembers>
+        <Member Name="Description" Caption="شرح" />
+        <Member Name="IsMandatory" Caption="اجباری" />
+        <Member Name="Level" Caption="سطح" />
+        <Member Name="SegmentGroup" Caption="گروه تفصیلی" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Selonia.Accounting.BusinessModel.Segment" Caption="تفصیلی">
+      <OwnMembers>
+        <Member Name="Code" Caption="کد" />
+        <Member Name="Description" Caption="شرح" />
+        <Member Name="Name" Caption="نام" />
+        <Member Name="SegmentGroup" Caption="گروه تفصیلی" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Selonia.Accounting.BusinessModel.SegmentGroup" Caption="گروه تفصیلی">
+      <OwnMembers>
+        <Member Name="Code" Caption="کد" />
+        <Member Name="Description" Caption="شرح" />
+        <Member Name="Name" Caption="نام" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Selonia.Accounting.BusinessModel.Voucher" Caption="سند حسابداری">
+      <OwnMembers>
+        <Member Name="CreditSum" Caption="بستانکار" />
+        <Member Name="DebitSum" Caption="بدهکار" />
+        <Member Name="Description" Caption="شرح" />
+        <Member Name="FiscalYear" Caption="سال مالی" />
+        <Member Name="FixNo" Caption="شماره ثابت" />
+        <Member Name="TempNo" Caption="شماره موقت" />
+        <Member Name="VoucherDate" Caption="تاریخ سند" />
+        <Member Name="VoucherItems" Caption="اقلام سند" />
+        <Member Name="VoucherState" Caption="وضعیت" />
+        <Member Name="VoucherType" Caption="نوع سند" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Selonia.Accounting.BusinessModel.VoucherItem" Caption="آرتیکل">
+      <OwnMembers>
+        <Member Name="Credit" Caption="بستانکار" />
+        <Member Name="Debit" Caption="بدهکار" />
+        <Member Name="Description" Caption="شرح" />
+        <Member Name="Ledger" Caption="معین" />
+        <Member Name="RowNo" Caption="ردیف" />
+        <Member Name="RowNoProperty" Caption="سطر" />
+        <Member Name="Segment1" Caption="تفصیلی ۱" />
+        <Member Name="Segment2" Caption="تفصیلی ۲" />
+        <Member Name="Segment3" Caption="تفصیلی ۳" />
+        <Member Name="Segment4" Caption="تفصیلی ۴" />
+        <Member Name="Voucher" Caption="سند حسابداری" />
+        <Member Name="VoucherItemSegments" Caption="اقلام تفصیلی" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Selonia.Accounting.BusinessModel.VoucherItemSegment" Caption="آرتیکل تفصیلی">
+      <OwnMembers>
+        <Member Name="Level" Caption="سطح" />
+        <Member Name="Segment" Caption="تفصیلی" />
+        <Member Name="VoucherItem" Caption="آرتیکل" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Selonia.Accounting.BusinessModel.VoucherState" Caption="وضعیت سند" />
+    <Class Name="Selonia.Accounting.BusinessModel.VoucherType" Caption="نوع سند">
+      <OwnMembers>
+        <Member Name="Code" Caption="کد" />
+        <Member Name="Name" Caption="نام" />
+      </OwnMembers>
+    </Class>
+  </BOModel>
+  <NavigationItems>
+    <Items>
+      <Item Id="@7423e3b9-dc05-4606-b948-6fe66bc44285" Caption="حسابداری">
+        <Items>
+          <Item Id="@1740d4c5-f746-4281-a637-4e7324c1a21f" Caption="اطلاعات پایه">
+            <Items>
+              <Item Id="@84d4ec1c-0588-4d42-81b9-1c76c0584a0c" Caption="گروه" />
+              <Item Id="@2b030d94-e3ae-41fc-b9ae-50eef5afad0d" Caption="کل" />
+              <Item Id="@0b35b4f9-0c71-4dd5-b092-9371f6b31173" Caption="معین" />
+              <Item Id="@7acad235-aab8-4d3d-9a99-3963114e3dab" Caption="گروه تفصیلی" />
+              <Item Id="@d9cb1ada-a747-4a0a-870a-b5eec8082071" Caption="تفصیلی" />
+              <Item Id="Voucher Type" Caption="نوع سند" />
+            </Items>
+          </Item>
+          <Item Id="@2bf46917-56c1-495f-8553-a6fb1e4e7533" Caption="عملیات">
+            <Items>
+              <Item Id="@b8374842-9b89-4d8c-9ad3-668af4f3ff0e" Caption="آرتیکل‌ها" />
+              <Item Id="@e4cca92a-fe03-4991-a019-967ec89e2108" Caption="لیست اسناد" />
+            </Items>
+          </Item>
+        </Items>
+      </Item>
+    </Items>
+  </NavigationItems>
+  <Views>
+    <DetailView Id="AccLedger_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="AccLedger">
+              <LayoutGroup Id="AccLedger_col2" Caption="AccLedger_col2" />
+              <LayoutGroup Id="AccLedger_col1" Caption="AccLedger_col1" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Voucher_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="Voucher">
+              <LayoutGroup Id="Voucher_col1">
+                <LayoutGroup Id="Autofd990299-eb42-468f-aa93-624b11762da0" Caption="Autofd990299-eb42-468f-aa93-624b11762da0(5)" />
+                <LayoutGroup Id="Auto4219efa6-dd68-4671-98b5-222fb2260012" Caption="Auto4219efa6-dd68-4671-98b5-222fb2260012(9)">
+                  <LayoutGroup Id="Autoecfb146a-a6a7-4681-be2a-df8fa52de964" Caption="Autoecfb146a-a6a7-4681-be2a-df8fa52de964(10)" />
+                  <LayoutGroup Id="Autod06d2f81-4d67-4807-9a5f-f7fd701632f6" Caption="Autod06d2f81-4d67-4807-9a5f-f7fd701632f6(13)" />
+                </LayoutGroup>
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="Voucher_VoucherItems_ListView">
+      <Columns>
+        <ColumnInfo Id="Ledger.Code" Caption="کد معین" />
+      </Columns>
+    </ListView>
+  </Views>
+</Application>

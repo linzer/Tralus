@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -11,23 +12,29 @@ using DevExpress.ExpressApp.DC;
 using DevExpress.Persistent.Base;
 using Tralus.Framework.BusinessModel.Entities;
 
-namespace Selonia.Accounting.BusinessModel.Entities
+namespace Selonia.Accounting.BusinessModel
 {
     [Table("Accounting.VoucherState")]
     public class VoucherState : FixedEntityBase
     {
-        public VoucherState()
+        public enum Values
         {
-            
+            [ImageName("BO_Unknown"), XafDisplayName("")]
+            Draft,
+
+            [ImageName("BO_Note"), XafDisplayName("")]
+            Registered,
+
+            [ImageName("BO_Validation"), XafDisplayName("")]
+            Accepted,
+
+            [ImageName("BO_Folder"), XafDisplayName("")]
+            Fixed
         }
 
-        public VoucherState(Enum value) : base(value)
+        protected override IList GetFixedItems()
         {
-        }
-
-        public override void PredefineData(DbContext dbContext)
-        {
-            var list = new []
+            var list = new[]
             {
                 new VoucherState((Values.Draft))
                 {
@@ -52,20 +59,30 @@ namespace Selonia.Accounting.BusinessModel.Entities
 
             };
 
-            dbContext.Set<VoucherState>().AddOrUpdate(list);
+            return list;
         }
 
-        public enum Values
+        #region Tralus Code
+        public VoucherState(Values value) : base(value)
         {
-            [ImageName("BO_Unknown"), XafDisplayName("")]
-            Draft,
-            [ImageName("BO_Note"), XafDisplayName("")]
-            Registered,
-            [ImageName("BO_Validation"), XafDisplayName("")]
-            Accepted,
-            [ImageName("BO_Folder"), XafDisplayName("")]
-            Fixed
         }
+
+        public VoucherState() : base(null)
+        {
+        }
+
+        public override void PredefineData(DbContext dbContext)
+        {
+            dbContext.AddOrUpdate(All<VoucherState>());
+        }
+
+        public static implicit operator VoucherState(Values value)
+        {
+            return new VoucherState().All<VoucherState>().First(o => o.Value == value.ToString());
+        }
+        #endregion
+
+       
     }
 
     
